@@ -1,4 +1,4 @@
-# oke-monitoring-stack
+# Monitoring OKE with DCGM Exporter, Metrics Server, Prometheus server, Grafana, and Node Exporter
 
 1 - Deploy the stack using the button below.
 
