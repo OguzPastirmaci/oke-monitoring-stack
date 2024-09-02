@@ -33,7 +33,7 @@ helm install --namespace monitoring dcgm-exporter gpu-helm-charts/dcgm-exporter 
 --values https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/helm/kube-dcgm-exporter-values.yaml
 ```
 
-3 - Once you configured your access to your OKE cluster, run the following command:
+3 - User port forwarding to access Grafana from your local machine:
 
 ```shell
 kubectl port-forward -n monitoring svc/kube-prometheus-stack-grafana 3001:80
