@@ -1,12 +1,37 @@
 # Monitoring OKE with DCGM Exporter, Metrics Server, Prometheus server, Grafana, and Node Exporter
 
-1 - Deploy the stack using the button below.
 
-[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/OguzPastirmaci/oke-monitoring-stack/releases/download/24.9.1/24.9.1.zip)
-
-2 - Follow the instructions in the web console to access your cluster from your local machine.
+1 - Follow the instructions in the web console to access your cluster from your local machine.
 
 Menu > Developer Services > Kubernetes Clusters (OKE) > Your Cluster > Access Cluster > Local Access
+
+2 - Deploy Prometheus stack
+
+```
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+```
+
+```
+helm install prometheus-community/kube-prometheus-stack \
+--create-namespace --namespace monitoring \
+--generate-name \
+--values https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/main/kube-prometheus-stack-values.yaml \
+--set prometheus.service.type=NodePort \
+--set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \
+--set grafana.service.type=NodePort
+```
+
+3 - Deploy DCGM Exporter
+
+```
+helm repo add gpu-helm-charts \
+  https://nvidia.github.io/dcgm-exporter/helm-charts
+```  
+
+```
+helm install --namespace monitoring --generate-name gpu-helm-charts/dcgm-exporter --values https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/main/kube-dcgm-exporter-values.yaml
+```
 
 3 - Once you configured your access to your OKE cluster, run the following command:
 
