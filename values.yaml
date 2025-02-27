@@ -4249,7 +4249,24 @@ prometheus:
     ## The scrape configuration example below will find master nodes, provided they have the name .*mst.*, relabel the
     ## port to 2379 and allow etcd scraping provided it is running on all Kubernetes master nodes
     ##
-    additionalScrapeConfigs: []
+    #additionalScrapeConfigs: []
+    additionalScrapeConfigs:
+    - job_name: gpu-metrics
+      scrape_interval: 1s
+      metrics_path: /metrics
+      scheme: http
+      kubernetes_sd_configs:
+      - role: endpoints
+        namespaces:
+          names:
+          - monitoring
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_node_name]
+        action: replace
+        target_label: kubernetes_node
+    - job_name: node-problem-detector
+      static_configs:
+      - targets: ['$NODE_IP:20257']        
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node
