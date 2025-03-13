@@ -1699,7 +1699,7 @@ kubelet:
     ## Attach metadata to discovered targets. Requires Prometheus v2.45 for endpoints created by the operator.
     ##
     attachMetadata:
-      node: false
+      node: true
 
     ## Scrape interval. If not set, the Prometheus default scrape interval is used.
     ##
@@ -2702,8 +2702,8 @@ prometheus-node-exporter:
 
       ## Attach node metadata to discovered targets. Requires Prometheus v2.35.0 and above.
       ##
-      # attachMetadata:
-      #   node: false
+      attachMetadata:
+         node: true
 
   rbac:
     ## If true, create PSPs for node-exporter
