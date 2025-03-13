@@ -4442,7 +4442,7 @@ prometheus:
         action: replace
         target_label: kubernetes_node
     - job_name: node-problem-detector
-      kubernetes_sd_config:
+      kubernetes_sd_configs:
       - role: node
       static_configs:
       - targets: ['$NODE_IP:20257']
