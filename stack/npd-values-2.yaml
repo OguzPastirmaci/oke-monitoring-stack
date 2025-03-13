@@ -1994,7 +1994,7 @@ metrics:
       disabled: []
     additionalLabels:
       #app: kube-prometheus-stack
-      #app.kubernetes.io/instance: kube-prometheus-stack
+      app.kubernetes.io/instance: prom
       release: prom
     additionalRules:
       - alert: NodeProblemGaugeRdmaLinkHasIssues
