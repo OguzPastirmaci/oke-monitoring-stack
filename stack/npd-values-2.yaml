@@ -1995,7 +1995,7 @@ metrics:
     additionalLabels:
       #app: kube-prometheus-stack
       #app.kubernetes.io/instance: kube-prometheus-stack
-      release: kube-prometheus-stack
+      release: prom
     additionalRules:
       - alert: NodeProblemGaugeRdmaLinkHasIssues
         annotations:
