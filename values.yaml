@@ -4445,7 +4445,7 @@ prometheus:
       static_configs:
       - targets: ['$NODE_IP:20257']
       relabel_configs:
-      - source_labels: __meta_kubernetes_node_label_oci_oraclecloud_com_host_serial_number
+      - source_labels: [__meta_kubernetes_node_label_oci_oraclecloud_com_host_serial_number]
         action: replace
         target_label: host_serial_number
     # - job_name: kube-etcd
