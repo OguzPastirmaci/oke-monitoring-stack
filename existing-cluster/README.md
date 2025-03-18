@@ -52,7 +52,7 @@ helm install gpu-rdma-node-problem-detector oci://ghcr.io/deliveryhero/helm-char
 kubectl get svc -n monitoring -l app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=grafana -o jsonpath='{.items[0].status.loadBalancer.ingress[0].ip}'
 ```
 
-4 - Then acess Grafana using the IP from the previous step.
+### 8. Then acess Grafana using the IP from the previous step.
 
 > [!IMPORTANT]  
 > The default username/password is `admin` & `prom-operator`. Change this in your first login.
