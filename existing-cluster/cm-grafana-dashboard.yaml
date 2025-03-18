@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: Node Problem Detector
+  name: node-problem-detector-dashboard
   labels:
     grafana_dashboard: "1"
 data:
