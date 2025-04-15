@@ -20,12 +20,12 @@ helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack \
 
 ### 3. Import Granafa Alerts
 ```
-kubectl apply -f https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/refs/heads/helm/existing-cluster/cm-grafana-alert-rules.yaml
+kubectl apply -n monitoring -f https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/refs/heads/helm/existing-cluster/cm-grafana-alert-rules.yaml
 ```
 
 ### 4. Import Grafana dashboards
 ```
-kubectl apply -f https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/refs/heads/helm/existing-cluster/cm-grafana-dashboard.yaml
+kubectl apply -n monitoring -f https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/refs/heads/helm/existing-cluster/cm-grafana-dashboard.yaml
 ```
 
 ### 5. Deploy DCGM Exporter
@@ -42,7 +42,7 @@ helm install --namespace monitoring dcgm-exporter gpu-helm-charts/dcgm-exporter 
 
 ### 6. Deploy Node Problem Detector
 ```
-helm install gpu-rdma-node-problem-detector oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.18 \
+helm install gpu-rdma-node-problem-detector oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.18 --namespace monitoring \
     -f https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/refs/heads/helm/existing-cluster/npd-values.yaml
 ```
 
