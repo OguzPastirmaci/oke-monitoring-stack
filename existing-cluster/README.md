@@ -15,7 +15,7 @@ helm repo update
 ```
 helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack \
 --create-namespace --namespace monitoring \
---values https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/refs/heads/helm/existing-cluster/kube-prometheus-values.yaml
+--values https://raw.githubusercontent.com/oracle-quickstart/oci-hpc-oke/refs/heads/main/terraform/files/kube-prometheus/values.yaml
 ```
 
 ### 3. Import Granafa Alerts
@@ -37,13 +37,13 @@ helm repo add gpu-helm-charts \
 
 ```
 helm install --namespace monitoring dcgm-exporter gpu-helm-charts/dcgm-exporter \
---values https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/helm/kube-dcgm-exporter-values.yaml
+--values https://raw.githubusercontent.com/oracle-quickstart/oci-hpc-oke/refs/heads/main/terraform/files/nvidia-dcgm-exporter/values.yaml
 ```
 
 ### 6. Deploy Node Problem Detector
 ```
 helm install gpu-rdma-node-problem-detector oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.18 --namespace monitoring \
-    -f https://raw.githubusercontent.com/OguzPastirmaci/oke-monitoring-stack/refs/heads/helm/existing-cluster/npd-values.yaml
+    -f https://raw.githubusercontent.com/oracle-quickstart/oci-hpc-oke/refs/heads/main/terraform/files/node-problem-detector/values.yaml
 ```
 
 ### 7. Get the public IP of your Grafana pod
