@@ -32,7 +32,7 @@ helm install --namespace monitoring dcgm-exporter gpu-helm-charts/dcgm-exporter 
 
 ### Deploy Node Problem Detector
 ```
-helm install gpu-rdma-node-problem-detector oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.18 --namespace monitoring \
+helm install gpu-rdma-node-problem-detector oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector --version 2.3.21 --namespace monitoring \
     -f https://raw.githubusercontent.com/oracle-quickstart/oci-hpc-oke/refs/heads/main/terraform/files/node-problem-detector/values.yaml
 ```
 
